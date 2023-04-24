@@ -3,6 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@sveltejs/vite-plugin-svelte': ^2.0.3
   '@tsconfig/svelte': ^4.0.1
+  pocketbase: ^0.14.0
   sass: ^1.62.0
   svelte: ^3.57.0
   svelte-check: ^2.10.3
@@ -12,6 +13,7 @@ specifiers:
   vite: ^4.3.0
 
 dependencies:
+  pocketbase: 0.14.0
   svelte-routing: 1.6.0_kxq5ayp4qfv2n6flkngpsntzw4
 
 devDependencies:
@@ -642,6 +644,10 @@ packages:
     resolution: {integrity: sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==}
     engines: {node: '>=8.6'}
     dev: true
+
+  /pocketbase/0.14.0:
+    resolution: {integrity: sha512-4y8kZkGQh4NJkuy/LntUBbFAplz655/5/+XYKetSwj6MYMo3N3zWFno+HxzmL59njsauwGsiNEWggbEETm1+WA==}
+    dev: false
 
   /postcss/8.4.23:
     resolution: {integrity: sha512-bQ3qMcpF6A/YjR55xtoTr0jGOlnPOKAIMdOWiv0EIT6HVPEaJiJB4NLljSbiHoC2RX7DN5Uvjtpbg1NPdwv1oA==}
