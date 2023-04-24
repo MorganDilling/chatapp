@@ -3,7 +3,7 @@ import { writable } from 'svelte/store';
 
 export const pb = new PocketBase("https://chatapp-api.morgandilling.dev")
 
-export const autheduser =writable(pb.authStore.model)
+export const autheduser = writable(pb.authStore.model)
 
 export const login = async (username: string, password: string) => {
   await pb.collection('users').authWithPassword(username, password);
