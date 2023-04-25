@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 :root {
-  font-family: 'Outfit',sans-serif;
+  font-family: 'Outfit', sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -14,11 +14,11 @@
 
 a {
   font-size: 24px;
-  color: #70A9FF;
+  color: #70a9ff;
 }
 
 a:visited {
-  color: #70A9FF;
+  color: #70a9ff;
 }
 
 body {
@@ -26,7 +26,6 @@ body {
   padding: 0;
   display: flex;
   place-items: center;
-  overflow: hidden;
   width: 100vw;
   height: 100vh;
 }
