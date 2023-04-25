@@ -7,23 +7,25 @@
 
 <Router>
   <Route path="/">
-    <div class="Header">
+    <div class="header">
       <h1>ChatApp</h1>
-      <div>
-        <div class="register"><Link to="/register">Register</Link></div>
-        <div class="login"><Link to="/login">Login</Link></div>
+      <div class="options-container">
+        <div class="button"><Link to="/register">Register</Link></div>
+        <div class="button"><Link to="/login">Login</Link></div>
       </div>
     </div>
 
     <div class="welcome">
-      <h2>
-        Welcome to ChatApp, the world's best single channel chat
-        applications...According to us.
-      </h2>
+      <h1>
+        Welcome to ChatApp, the world's best single channel chat application...
+        According to us.
+      </h1>
     </div>
 
     <div class="review">
-      <h2>"The #1 way to get harrassed on the internet."-Anonymous user</h2>
+      <h1>
+        "The #1 way to get harrassed on the internet."<br /> - Anonymous user
+      </h1>
     </div>
 
     <div class="copyright">
@@ -36,45 +38,38 @@
 </Router>
 
 <style lang="scss">
-  @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap');
-  * {
-    margin: 0px;
-    padding: 0px;
+  @use './lib/styles/colours.scss' as colours;
+
+  .button {
+    // styles here :)
   }
 
-  .Header {
-    background-color: #d9d9d9;
-    color: black;
+  .options-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    // perhaps some more stuff? hmmmmmmmmmmmmmmmmm ¯\_(ツ)_/¯
+  }
+
+  .header {
+    background-color: colours.$grey;
+    color: colours.$black;
     padding: 12px;
-    // padding-right: 1100px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
   }
-  // .register {
-  //   // text-align: right;
-  //   // padding-right: 48px;
-  //   // padding-top: 12px;
-  // }
 
-  // .login {
-  //   text-align: right;
-  //   padding-right: 48px;
-  //   padding-top: 12px;
-  // }
   .welcome {
-    font-size: 20px;
-    font-family: outfit;
     padding: 150px;
   }
   .copyright {
     text-align: center;
-    top: 0px;
   }
   .review {
-    font-size: 20px;
-    font-family: outfit;
-    background-color: #d9d9d9;
-    color: black;
+    background-color: colours.$grey;
+    color: colours.$black;
     padding: 150px;
     text-align: left;
   }
