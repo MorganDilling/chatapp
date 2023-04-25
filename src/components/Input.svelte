@@ -16,7 +16,8 @@
     position: relative;
     width: 298px;
     height: 60px;
-    margin-top: 20px;
+    margin: 30px;
+    margin-top: 15px;
   }
 
   .input-label,
@@ -31,7 +32,7 @@
     outline: none;
     border: none;
     border-bottom: 2px solid colours.$text;
-    font-size: 32px;
+    font-size: 34px;
     background: none;
     color: colours.$text;
     width: 100%;
@@ -40,7 +41,8 @@
 
   .input-label {
     z-index: 2;
-    font-size: 32px;
+    font-size: 34px;
+    font-weight: 300;
     text-align: left;
     text-transform: uppercase;
     color: colours.$text;
@@ -55,7 +57,7 @@
 
   .input-field:focus ~ .input-label,
   .input-field:valid ~ .input-label {
-    transform: translate(0px, -20px);
-    font-size: 24px;
+    transform: translate(0px, -30px);
+    font-size: 22px;
   }
 </style>
