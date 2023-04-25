@@ -1,11 +1,13 @@
 <script lang=ts>
 	import {Link} from 'svelte-routing';
 </script>
-<main class=center>
+<main >
 	<h1>ChatApp</h1>
-	<input type="text" id="username" name="username" placeholder="USERNAME" >
-	<input type="password" id="password"  name="password" placeholder="PASSWORD">
-	<button>REGISTER</button>
+	<form>
+		<input type="text" class="username" name="username" placeholder="USERNAME" >
+		<input type="password" class="password"  name="password" placeholder="PASSWORD">
+		<button>REGISTER</button>
+	</form>
 	<p>Already have an account?</p>
 	<Link to="/login">Log in here.</Link>
 </main>
@@ -25,7 +27,7 @@
 		
 	}
 
-	#username {
+	.username {
 		display: block;
 		width: 298px;
 		border-left: none;
@@ -46,7 +48,7 @@
 
 	}
 
-	#password {
+	.password {
 		display: block;
 		width: 298px;
 		border-left: none;
@@ -66,7 +68,7 @@
 
 		
 	}
-	button{
+	button {
 		width: 298px;
 		height: 70px;
 		font-size: 36px;
@@ -77,7 +79,7 @@
 		font-weight: bold;
 	}
 
-	p{
+	p {
 		width: 298px;
 		position: relative;
 		display: block;
@@ -87,14 +89,10 @@
 		
 	}
 
-	h1{
+	h1 {
 		font-size: 96px;
 		margin: 0px;
 		color: white
 	}
-
-
-	
-
 
 </style>
