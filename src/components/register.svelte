@@ -5,17 +5,27 @@
 
 <main>
   <h1>ChatApp</h1>
-  <form>
+  <form on:submit|preventDefault>
     <Input type="text" name="username" placeholder="username" />
     <Input type="password" name="password" placeholder="password" />
     <button>REGISTER</button>
   </form>
-  <p>Already have an account?</p>
-  <Link to="/login">Log in here.</Link>
+  <div class="already-account">
+    <p>Already have an account?</p>
+    <Link to="/login">Log in here.</Link>
+  </div>
 </main>
 
 <style lang="scss">
   @use '../lib/styles/colours.scss' as colours;
+
+  .already-account > * {
+    font-weight: 300;
+  }
+
+  form {
+    margin-bottom: 20px;
+  }
 
   main {
     background-color: colours.$primary;
@@ -35,7 +45,8 @@
     margin-top: 15px;
     border: none;
     color: colours.$primary;
-    font-weight: bold;
+    font-weight: 700;
+    cursor: pointer;
   }
 
   p {
