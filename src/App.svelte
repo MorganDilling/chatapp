@@ -6,9 +6,6 @@
 </script>
 
 <Router>
-  <Route path="/">
-    <Link to="/register">register</Link>  
-  </Route>
 
   <Route path="app" component={app} />
   <Route path="register" component={register} />
