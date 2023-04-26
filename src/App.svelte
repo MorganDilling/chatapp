@@ -10,8 +10,8 @@
     <div class="header">
       <h1>ChatApp</h1>
       <div class="options-container">
-        <div class="button"><Link to="/register">Register</Link></div>
-        <div class="button"><Link to="/login">Login</Link></div>
+        <Link style="text-decoration: none;" to="/register"><div class="button highlight" >Register</div></Link>
+        <Link style="text-decoration: none;" to="/login"><div class="button">Login</div></Link>
       </div>
     </div>
 
@@ -41,13 +41,29 @@
   @use './lib/styles/colours.scss' as colours;
 
   .button {
-    // styles here :)
+    width: 235px;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    text-transform: uppercase;
+    font-weight: 700;
+    background-color: colours.$text;
+    color: colours.$primary;
+  }
+
+  .highlight {
+    background-color: colours.$primary;
+    color: colours.$text;
   }
 
   .options-container {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    margin-right: 50px;
+    margin-top: 15px;
 
     // perhaps some more stuff? hmmmmmmmmmmmmmmmmm ¯\_(ツ)_/¯
   }
