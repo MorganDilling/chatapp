@@ -12,7 +12,7 @@
     </form>
     <div class="no-account">
       <p>Don't have an account?</p>
-      <Link to="/login">Register here.</Link>
+      <Link to="/register">Register here.</Link>
     </div>
   </main>
   
