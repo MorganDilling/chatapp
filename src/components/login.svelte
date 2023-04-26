@@ -19,7 +19,7 @@
   <style lang="scss">
     @use '../lib/styles/colours.scss' as colours;
   
-    .already-account > * {
+    .no-account > * {
       font-weight: 300;
     }
   
