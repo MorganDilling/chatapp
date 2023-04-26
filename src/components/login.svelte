@@ -10,7 +10,7 @@
       <Input type="password" name="password" placeholder="password" />
       <button>LOG IN</button>
     </form>
-    <div class="don't-have-account">
+    <div class="no-account">
       <p>Don't have an account?</p>
       <Link to="/login">Register here.</Link>
     </div>
