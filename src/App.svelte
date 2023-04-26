@@ -51,6 +51,7 @@
     font-weight: 700;
     background-color: colours.$text;
     color: colours.$primary;
+    vertical-align: center ;
   }
 
   .highlight {
@@ -62,10 +63,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin-right: 50px;
-    margin-top: 15px;
-
-    // perhaps some more stuff? hmmmmmmmmmmmmmmmmm ¯\_(ツ)_/¯
+    margin-right: 20px;
   }
 
   .header {
@@ -75,6 +73,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
+    left: 0;
+    top: 0;
   }
 
   .welcome {
