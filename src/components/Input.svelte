@@ -2,10 +2,23 @@
   export let type: string;
   export let name: string;
   export let placeholder: string;
+
+  export let value: string;
+
+  const typeAction = (node) => {
+    node.type = type;
+  };
 </script>
 
 <div class="input-container">
-  <input required {type} {name} id={name} class="input-field" />
+  <input
+    required
+    {name}
+    id={name}
+    class="input-field"
+    use:typeAction
+    bind:value
+  />
   <label for={name} class="input-label">{placeholder}</label>
 </div>
 
