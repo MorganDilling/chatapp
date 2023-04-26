@@ -7,30 +7,36 @@
 
 <Router>
   <Route path="/">
-    <div class="header">
-      <h1>ChatApp</h1>
-      <div class="options-container">
-        <Link style="text-decoration: none;" to="/register"><div class="button highlight" >Register</div></Link>
-        <Link style="text-decoration: none;" to="/login"><div class="button">Login</div></Link>
+    <main>
+      <div class="header">
+        <h1>ChatApp</h1>
+        <div class="options-container">
+          <Link style="text-decoration: none;" to="/register"
+            ><div class="button highlight">Register</div></Link
+          >
+          <Link style="text-decoration: none;" to="/login"
+            ><div class="button">Login</div></Link
+          >
+        </div>
       </div>
-    </div>
 
-    <div class="welcome">
-      <h1>
-        Welcome to ChatApp, the world's best single channel chat application...
-        According to us.
-      </h1>
-    </div>
+      <div class="welcome">
+        <h1>
+          Welcome to ChatApp, the world's best single channel chat
+          application... According to us.
+        </h1>
+      </div>
 
-    <div class="review">
-      <h1>
-        "The #1 way to get harrassed on the internet."<br /> - Anonymous user
-      </h1>
-    </div>
+      <div class="review">
+        <h1>
+          "The #1 way to get harrassed on the internet."<br /> - Anonymous user
+        </h1>
+      </div>
 
-    <div class="copyright">
-      <h6>© ChatApp incorporated 2023</h6>
-    </div>
+      <div class="copyright">
+        <h6>© ChatApp incorporated 2023</h6>
+      </div>
+    </main>
   </Route>
   <Route path="app" component={app} />
   <Route path="register" component={register} />
@@ -39,6 +45,10 @@
 
 <style lang="scss">
   @use './lib/styles/colours.scss' as colours;
+
+  main {
+    width: 100%;
+  }
 
   .button {
     width: 235px;
@@ -51,7 +61,7 @@
     font-weight: 700;
     background-color: colours.$text;
     color: colours.$primary;
-    vertical-align: center ;
+    vertical-align: center;
   }
 
   .highlight {
@@ -63,7 +73,6 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin-right: 20px;
   }
 
   .header {
@@ -73,9 +82,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
     left: 0;
     top: 0;
+    position: sticky;
   }
 
   .welcome {
