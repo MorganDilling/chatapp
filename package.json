@@ -22,6 +22,7 @@
   },
   "dependencies": {
     "pocketbase": "^0.14.0",
+    "svelte-bootstrap-icons": "^2.3.1",
     "svelte-navigator": "^3.2.2"
   }
 }
