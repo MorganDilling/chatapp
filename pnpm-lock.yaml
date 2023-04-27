@@ -8,14 +8,14 @@ specifiers:
   sass: ^1.62.0
   svelte: ^3.57.0
   svelte-check: ^2.10.3
-  svelte-routing: ^1.6.0
+  svelte-navigator: ^3.2.2
   tslib: ^2.5.0
   typescript: ^5.0.4
   vite: ^4.3.0
 
 dependencies:
   pocketbase: 0.14.0
-  svelte-routing: 1.6.0_kxq5ayp4qfv2n6flkngpsntzw4
+  svelte-navigator: 3.2.2_kxq5ayp4qfv2n6flkngpsntzw4
 
 devDependencies:
   '@sveltejs/vite-plugin-svelte': 2.1.0_svelte@3.58.0+vite@4.3.1
@@ -796,6 +796,17 @@ packages:
       svelte: 3.58.0
     dev: true
 
+  /svelte-navigator/3.2.2_kxq5ayp4qfv2n6flkngpsntzw4:
+    resolution: {integrity: sha512-Xio4ohLUG1nQJ+ENNbLphXXu9L189fnI1WGg+2Q3CIMPe8Jm2ipytKQthdBs8t0mN7p3Eb03SE9hq0xZAqwQNQ==}
+    peerDependencies:
+      svelte: 3.x
+    dependencies:
+      svelte: 3.58.0
+      svelte2tsx: 0.1.193_kxq5ayp4qfv2n6flkngpsntzw4
+    transitivePeerDependencies:
+      - typescript
+    dev: false
+
   /svelte-preprocess/4.10.7_ytpbah25u4yfpsea2larxswbie:
     resolution: {integrity: sha512-sNPBnqYD6FnmdBrUmBCaqS00RyCsCpj2BG58A1JBswNF7b0OKviwxqVrOL/CKyJrLSClrSeqQv5BXNg2RUbPOw==}
     engines: {node: '>= 9.11.2'}
@@ -847,17 +858,6 @@ packages:
       svelte: 3.58.0
       typescript: 5.0.4
     dev: true
-
-  /svelte-routing/1.6.0_kxq5ayp4qfv2n6flkngpsntzw4:
-    resolution: {integrity: sha512-+DbrSGttLA6lan7oWFz1MjyGabdn3tPRqn8Osyc471ut2UgCrzM5x1qViNMc2gahOP6fKbKK1aNtZMJEQP2vHQ==}
-    peerDependencies:
-      svelte: ^3.20.x
-    dependencies:
-      svelte: 3.58.0
-      svelte2tsx: 0.1.193_kxq5ayp4qfv2n6flkngpsntzw4
-    transitivePeerDependencies:
-      - typescript
-    dev: false
 
   /svelte/3.58.0:
     resolution: {integrity: sha512-brIBNNB76mXFmU/Kerm4wFnkskBbluBDCjx/8TcpYRb298Yh2dztS2kQ6bhtjMcvUhd5ynClfwpz5h2gnzdQ1A==}
