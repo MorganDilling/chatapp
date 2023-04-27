@@ -1,13 +1,40 @@
 <script lang="ts">
-  import { Link } from 'svelte-routing';
+  import { Link,navigate } from 'svelte-navigator';
   import Input from './Input.svelte';
+  import { register } from '../lib/PocketBase'
+
+  let username: string;
+  let password: string;
+  let errorDisplayed = false
+  let errorMessage = ""
+
+  const Register = () => {
+  if (username.length < 3) {
+    errorDisplayed = true
+    errorMessage = "Username must have minimum 3 characters"
+    return
+  }
+  if (password.length < 8) {
+    errorDisplayed = true
+    errorMessage = "Password must have minimum 8 characters"
+    return
+  }
+  register(username, password)
+  navigate("/app", { replace: true });
+}
+
+
+
 </script>
 
 <main>
   <h1>ChatApp</h1>
-  <form on:submit|preventDefault>
-    <Input type="text" name="username" placeholder="username" />
-    <Input type="password" name="password" placeholder="password" />
+  <form style="display:flex; justify-content: center; align-items: center; flex-direction: column;" on:submit|preventDefault={Register}>
+    <Input bind:value={username} type="text" name="username" placeholder="username" />
+    <Input bind:value={password} type="password" name="password" placeholder="password" />
+    {#if errorDisplayed == true}
+      <p class="error">{errorMessage} </p>
+    {/if}
     <button>REGISTER</button>
   </form>
   <div class="already-account">
@@ -62,5 +89,9 @@
     font-size: 96px;
     margin: 0px;
     color: white;
+  }
+
+  .error {
+    color: colours.$error;
   }
 </style>
