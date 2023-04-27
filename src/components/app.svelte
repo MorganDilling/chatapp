@@ -1,5 +1,34 @@
 <script lang="ts">
   import { ThreeDotsVertical, Send } from 'svelte-bootstrap-icons';
+  import { onMount, onDestroy } from 'svelte';
+  import { user, pb } from '../lib/PocketBase';
+  import Message from './Message.svelte';
+
+  let newMessage: string;
+  let messages = [];
+  let unsubscribe: () => void;
+
+  onMount(async () => {
+    const resultList = await pb.collection('messages').getList(1, 50, {
+      sort: 'created',
+      expand: 'username',
+    });
+    messages = resultList.items;
+
+    pb.collection('messages').subscribe('*', async ({ action, record }) => {
+      if (action === 'create') {
+        const user = await pb.collection('users').getOne(record.user);
+        messages = [...messages, record];
+      }
+    });
+  });
+  async function sendMessage() {
+    const data = {
+      text: messages,
+      user: $user.id,
+    };
+    const createdMessage = await pb.collection('messages').create(data);
+  }
 </script>
 
 <main>
@@ -10,7 +39,22 @@
     ><ThreeDotsVertical style="scale: 2" /></button
   >
   <div class="message-container">
-    <div>bitch</div>
+    {#each messages as message (message.id)}
+      <div class="msg">
+        <img
+          class="avatar"
+          src="https://avatars.dicebear.com/api/avataaars/${message.username}.svg"
+          alt="avatar"
+          width="40px"
+        />
+        <div>
+          <small>
+            sent by @{message.expand?.user?.username}
+          </small>
+          <p class="msg-text">{message.text}</p>
+        </div>
+      </div>
+    {/each}
   </div>
   <div class="input-box-container">
     <div class="input-box">
@@ -91,8 +135,15 @@
     width: 100%;
   }
   .message-container {
+    position: absolute;
+    top: 48%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     background-color: red;
     display: flex;
     justify-content: center;
+    align-items: center;
+    width: 90%;
+    height: 85%;
   }
 </style>
