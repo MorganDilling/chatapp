@@ -83,9 +83,5 @@
         object-fit: cover;
     }
 
-    title {
-        height: 40px;
-    }
-
 
 </style>
