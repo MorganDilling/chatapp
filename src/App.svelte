@@ -1,11 +1,11 @@
 <script lang="ts">
-  import { Router, Route, Link } from 'svelte-routing';
+  import { Router, Route, Link } from 'svelte-navigator';
   import app from './components/app.svelte';
   import register from './components/register.svelte';
   import login from './components/login.svelte';
 </script>
 
-<Router>
+<Router primary={false}>
   <Route path="/">
     <main>
       <div class="header">
