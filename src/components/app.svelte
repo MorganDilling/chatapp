@@ -1,34 +1,49 @@
 <script lang="ts">
   import { ThreeDotsVertical, Send } from 'svelte-bootstrap-icons';
   import { onMount, onDestroy } from 'svelte';
-  import { user, pb } from '../lib/PocketBase';
+  import { autheduser, pb } from '../lib/PocketBase';
+  import { writable } from 'svelte/store';
   import Message from './Message.svelte';
 
-  let newMessage: string;
-  let messages = [];
-  let unsubscribe: () => void;
+  let message: string;
+  const messages = [];
+  const messagesWritable = writable(messages);
 
   onMount(async () => {
     const resultList = await pb.collection('messages').getList(1, 50, {
       sort: 'created',
-      expand: 'username',
+      expand: 'user',
     });
-    messages = resultList.items;
+
+    resultList.items.forEach((item) => {
+      messages.unshift(item);
+    });
+
+    messagesWritable.set(messages);
 
     pb.collection('messages').subscribe('*', async ({ action, record }) => {
       if (action === 'create') {
         const user = await pb.collection('users').getOne(record.user);
-        messages = [...messages, record];
+
+        record.expand = { user };
+
+        messages.unshift(record);
+        messagesWritable.set(messages);
       }
     });
   });
-  async function sendMessage() {
-    const data = {
-      text: messages,
-      user: $user.id,
-    };
-    const createdMessage = await pb.collection('messages').create(data);
-  }
+
+  onDestroy(async () => {
+    await pb.collection('messages').unsubscribe('*');
+  });
+
+  const sendMessage = async () => {
+    await pb.collection('messages').create({
+      message,
+      user: $autheduser.id,
+    });
+    message = '';
+  };
 </script>
 
 <main>
@@ -39,28 +54,23 @@
     ><ThreeDotsVertical style="scale: 2" /></button
   >
   <div class="message-container">
-    {#each messages as message (message.id)}
-      <div class="msg">
-        <img
-          class="avatar"
-          src="https://avatars.dicebear.com/api/avataaars/${message.username}.svg"
-          alt="avatar"
-          width="40px"
-        />
-        <div>
-          <small>
-            sent by @{message.expand?.user?.username}
-          </small>
-          <p class="msg-text">{message.text}</p>
-        </div>
-      </div>
+    {#each $messagesWritable as message}
+      <Message
+        username={message.expand.user.username}
+        profile={message.expand.user.avatar}
+        creationDate={new Date(message.created)}>{message.message}</Message
+      >
     {/each}
   </div>
   <div class="input-box-container">
-    <div class="input-box">
-      <input type="text" placeholder="Type something ..." />
-      <button class="send"><Send style="scale: 2;" /></button>
-    </div>
+    <form on:submit|preventDefault={sendMessage} class="input-box">
+      <input
+        bind:value={message}
+        type="text"
+        placeholder="Type something ..."
+      />
+      <button class="send"><Send style="scale: 1.5;" /></button>
+    </form>
   </div>
 </main>
 
@@ -131,7 +141,7 @@
   textarea,
   input {
     color: white;
-    font-size: 30px;
+    font-size: 20px;
     width: 100%;
   }
   .message-container {
@@ -139,11 +149,11 @@
     top: 48%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: red;
     display: flex;
-    justify-content: center;
-    align-items: center;
     width: 90%;
     height: 85%;
+    overflow-y: scroll;
+    flex-direction: column-reverse;
+    color: whitesmoke;
   }
 </style>
