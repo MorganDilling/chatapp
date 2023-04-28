@@ -1,39 +1,50 @@
 <script lang="ts">
-  import { Link,navigate } from 'svelte-navigator';
+  import { Link, navigate } from 'svelte-navigator';
   import Input from './Input.svelte';
-  import { register } from '../lib/PocketBase'
+  import { register, login } from '../lib/PocketBase';
 
   let username: string;
   let password: string;
-  let errorDisplayed = false
-  let errorMessage = ""
+  let errorDisplayed = false;
+  let errorMessage = '';
 
   const Register = () => {
-  if (username.length < 3) {
-    errorDisplayed = true
-    errorMessage = "Username must have minimum 3 characters"
-    return
-  }
-  if (password.length < 8) {
-    errorDisplayed = true
-    errorMessage = "Password must have minimum 8 characters"
-    return
-  }
-  register(username, password)
-  navigate("/app", { replace: true });
-}
-
-
-
+    if (username.length < 3) {
+      errorDisplayed = true;
+      errorMessage = 'Username must have minimum 3 characters';
+      return;
+    }
+    if (password.length < 8) {
+      errorDisplayed = true;
+      errorMessage = 'Password must have minimum 8 characters';
+      return;
+    }
+    register(username, password);
+    login(username, password);
+    navigate('/app', { replace: true });
+  };
 </script>
 
 <main>
   <h1>ChatApp</h1>
-  <form style="display:flex; justify-content: center; align-items: center; flex-direction: column;" on:submit|preventDefault={Register}>
-    <Input bind:value={username} type="text" name="username" placeholder="username" />
-    <Input bind:value={password} type="password" name="password" placeholder="password" />
+  <form
+    style="display:flex; justify-content: center; align-items: center; flex-direction: column;"
+    on:submit|preventDefault={Register}
+  >
+    <Input
+      bind:value={username}
+      type="text"
+      name="username"
+      placeholder="username"
+    />
+    <Input
+      bind:value={password}
+      type="password"
+      name="password"
+      placeholder="password"
+    />
     {#if errorDisplayed == true}
-      <p class="error">{errorMessage} </p>
+      <p class="error">{errorMessage}</p>
     {/if}
     <button>REGISTER</button>
   </form>
