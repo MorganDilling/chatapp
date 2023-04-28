@@ -1,13 +1,15 @@
-<body>
-    <main>
-        <button>CHANGE USERNAME</button>
-        <button>CHANGE PASSWORD</button>
-        <button>CHANGE PROFILE PIC</button>
-        <button class="small redbutton">LOG OUT</button>
-        <button class="redbutton bigspace">DELETE ACCOUNT</button>
-        <button class="small" >CLOSE</button>
-    </main>    
-</body>
+<script lang="ts">
+    import { fly } from 'svelte/transition';
+</script>
+<main transition:fly="{{ x: 200, duration: 750 }}">
+    <button>CHANGE USERNAME</button>
+    <button>CHANGE PASSWORD</button>
+    <button>CHANGE PROFILE PIC</button>
+    <button class="small redbutton">LOG OUT</button>
+    <button class="redbutton bigspace">DELETE ACCOUNT</button>
+    <button class="small" >CLOSE</button>
+</main>
+
 
 
 
