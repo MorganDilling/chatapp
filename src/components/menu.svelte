@@ -10,15 +10,8 @@
     <button class="small" >CLOSE</button>
 </main>
 
-
-
-
 <style lang="scss">
     @use '../lib/styles/colours.scss' as colours;
-    body {
-        background-color: grey;
-        
-    }
     main {
         float: right;
         background-color: white;
@@ -47,7 +40,6 @@
         height: 54px;
         display: block;
         text-align: center;
-
     }
     .redbutton {
         background-color: colours.$error;
