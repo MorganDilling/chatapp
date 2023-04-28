@@ -4,12 +4,20 @@
   import { autheduser, pb } from '../lib/PocketBase';
   import { writable } from 'svelte/store';
   import Message from './Message.svelte';
+  import Menu from './menu.svelte';
+  import { navigate } from 'svelte-navigator';
 
+  let menuOpened = false;
   let message: string;
   const messages = [];
   const messagesWritable = writable(messages);
 
   onMount(async () => {
+    if (!$autheduser) {
+      navigate('/login', { replace: true });
+      return;
+    }
+
     const resultList = await pb.collection('messages').getList(1, 50, {
       sort: 'created',
       expand: 'user',
@@ -38,10 +46,12 @@
   });
 
   const sendMessage = async () => {
-    await pb.collection('messages').create({
-      message,
-      user: $autheduser.id,
-    });
+    try {
+      await pb.collection('messages').create({
+        message,
+        user: $autheduser.id,
+      });
+    } catch {}
     message = '';
   };
 </script>
@@ -50,16 +60,21 @@
   <div class="ChatApp">
     <h1>ChatApp</h1>
   </div>
-  <button class="threeDotsVertical"
-    ><ThreeDotsVertical style="scale: 2" /></button
+  <button
+    on:click={() => {
+      menuOpened = true;
+    }}
+    class="threeDotsVertical"><ThreeDotsVertical style="scale: 2" /></button
   >
   <div class="message-container">
     {#each $messagesWritable as message}
-      <Message
-        username={message.expand.user.username}
-        profile={message.expand.user.avatar}
-        creationDate={new Date(message.created)}>{message.message}</Message
-      >
+      {#if message.expand.user}
+        <Message
+          username={message.expand.user.username}
+          profile={message.expand.user.avatar}
+          creationDate={new Date(message.created)}>{message.message}</Message
+        >
+      {/if}
     {/each}
   </div>
   <div class="input-box-container">
@@ -72,6 +87,7 @@
       <button class="send"><Send style="scale: 1.5;" /></button>
     </form>
   </div>
+  <Menu visible={menuOpened} bind:sharedVisible={menuOpened} />
 </main>
 
 <style lang="scss">

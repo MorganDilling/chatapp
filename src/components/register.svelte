@@ -8,7 +8,7 @@
   let errorDisplayed = false;
   let errorMessage = '';
 
-  const Register = () => {
+  const Register = async () => {
     if (username.length < 3) {
       errorDisplayed = true;
       errorMessage = 'Username must have minimum 3 characters';
@@ -19,8 +19,8 @@
       errorMessage = 'Password must have minimum 8 characters';
       return;
     }
-    register(username, password);
-    login(username, password);
+    await register(username, password);
+    await login(username, password);
     navigate('/app', { replace: true });
   };
 </script>
