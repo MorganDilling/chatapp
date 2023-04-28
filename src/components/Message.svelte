@@ -1,87 +1,84 @@
-
-
 <script lang="ts">
-    export let username: string;
-    export let creationDate: Date;
-    export let profile: string;
-    
-    const formatDate = (date: Date) => {
-        const today = new Date();
-        const yesterday = new Date(today);
-        yesterday.setDate(today.getDate() - 1)
+  export let username: string;
+  export let creationDate: Date;
+  export let profile: string;
 
-        const dateString = date.toLocaleDateString();
-        const timeString = date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit'})
+  const formatDate = (date: Date) => {
+    const today = new Date();
+    const yesterday = new Date(today);
+    yesterday.setDate(today.getDate() - 1);
 
-        if (date.toDateString() === today.toDateString()) {
-            return `today at ${timeString}`
-        }
-        else if (date.toDateString() === today.toDateString()) {
-            return `yesterday at ${timeString}`
-        }
-        else {
-            return `${dateString} at ${timeString}`
-        }
+    const dateString = date.toLocaleDateString();
+    const timeString = date.toLocaleTimeString([], {
+      hour: '2-digit',
+      minute: '2-digit',
+    });
+
+    if (date.toDateString() === today.toDateString()) {
+      return `today at ${timeString}`;
+    } else if (date.toDateString() === today.toDateString()) {
+      return `yesterday at ${timeString}`;
+    } else {
+      return `${dateString} at ${timeString}`;
     }
+  };
 </script>
 
 <div class="container">
-    <div style="flex: 0 1 50px; padding: 5px;">
-        <img alt="profile" src={profile} class='profile'>
+  <div style="flex: 0 1 50px; padding: 5px;">
+    <img
+      alt="profile"
+      src={!!profile ? profile : '/profile.svg'}
+      class="profile"
+    />
+  </div>
+  <div style="flex: 1 1 auto;">
+    <div class="messagetitle">
+      <div class="user">{username}</div>
+      <div class="whenrecieved">{formatDate(creationDate)}</div>
     </div>
-    <div style="flex: 1 1 auto;">
-        <div class = "messagetitle">
-            <div class="user">{username}</div>
-            <div class="whenrecieved">{formatDate(creationDate)}</div>
-        </div>
-        <div class="message"><slot/></div>
-    </div>
+    <div class="message"><slot /></div>
+  </div>
 </div>
 
 <style lang="scss">
-    @use "../lib/styles/colours.scss" as colours;
+  @use '../lib/styles/colours.scss' as colours;
 
-    .container {
-        width: 500px;
-        display: flex;
-    }
+  .container {
+    width: 500px;
+    display: flex;
+  }
 
-    .whenrecieved {
-        color: rgba(255,255,255,0.5);
-        padding-left: 5px;
-        
-    }
-    .message {
-         color: colours.$text;
-         display:flex;
-         margin: 0px;
-         padding: 0px;
-         text-align: left;
-         word-break: break-word;
-         
+  .whenrecieved {
+    color: rgba(255, 255, 255, 0.5);
+    padding-left: 5px;
+  }
+  .message {
+    color: colours.$text;
+    display: flex;
+    margin: 0px;
+    padding: 0px;
+    text-align: left;
+    word-break: break-word;
+  }
+  .messagetitle {
+    display: flex;
+    align-items: center;
+    margin: 0px;
+    padding: 0px;
+    flex-direction: row;
+  }
+  .user {
+    font-weight: bold;
+  }
 
-    }
-    .messagetitle {
-        display:flex;
-        align-items: center;
-        margin: 0px;
-        padding: 0px;
-        flex-direction: row;
-    }
-    .user {
-        font-weight: bold;
-       
-    }
-
-    .profile{
-        text-align: center;
-        border-radius: 75%;
-        display: block;
-        height: 45px;
-        width: 45px;
-        display: flex;
-        object-fit: cover;
-    }
-
-
+  .profile {
+    text-align: center;
+    border-radius: 75%;
+    display: block;
+    height: 45px;
+    width: 45px;
+    display: flex;
+    object-fit: cover;
+  }
 </style>
