@@ -3,11 +3,15 @@
   import { logout } from '../lib/PocketBase';
   import { navigate } from 'svelte-navigator';
   import DeleteAccountModal from './DeleteAccountModal.svelte';
+  import ProfileChangeModal from './ProfileChangeModal.svelte';
+  import UsernameChangeModal from './UsernameChangeModal.svelte';
 
   export let visible = false;
   export let sharedVisible = false;
 
   let deleteAccountModalVisible = false;
+  let profileAccountModalVisible = false;
+  let usernameModalVisible = false;
 
   const Logout = async () => {
     await logout();
@@ -25,9 +29,12 @@
     class="background"
   />
   <main transition:fly={{ x: 200, duration: 750 }}>
-    <button>CHANGE USERNAME</button>
-    <button>CHANGE PASSWORD</button>
-    <button>CHANGE PROFILE PIC</button>
+    <button on:click={() => (usernameModalVisible = true)}
+      >CHANGE USERNAME</button
+    >
+    <button on:click={() => (profileAccountModalVisible = true)}
+      >CHANGE PROFILE PIC</button
+    >
     <button on:click={Logout} class="small redbutton">LOG OUT</button>
     <button
       on:click={() => {
@@ -48,6 +55,16 @@
 <DeleteAccountModal
   visible={deleteAccountModalVisible}
   bind:sharedVisible={deleteAccountModalVisible}
+/>
+
+<ProfileChangeModal
+  visible={profileAccountModalVisible}
+  bind:sharedVisible={profileAccountModalVisible}
+/>
+
+<UsernameChangeModal
+  visible={usernameModalVisible}
+  bind:sharedVisible={usernameModalVisible}
 />
 
 <style lang="scss">
