@@ -154,7 +154,6 @@
     color: white;
     cursor: pointer;
   }
-  textarea,
   input {
     color: white;
     font-size: 20px;
@@ -162,12 +161,12 @@
   }
   .message-container {
     position: absolute;
-    top: 48%;
+    top: 47%;
     left: 50%;
     transform: translate(-50%, -50%);
     display: flex;
     width: 90%;
-    height: 85%;
+    height: 84%;
     overflow-y: scroll;
     flex-direction: column-reverse;
     color: whitesmoke;
