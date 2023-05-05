@@ -114,7 +114,13 @@
             >Delete message <TrashFill /></button
           >
         {:else}
-          <button class="danger">Report message <FlagFill /></button>
+          <button
+            class="danger"
+            on:click={() => {
+              optionsModalShown = false;
+              alert('cope');
+            }}>Report message <FlagFill /></button
+          >
         {/if}
         <button
           on:click={() => {
