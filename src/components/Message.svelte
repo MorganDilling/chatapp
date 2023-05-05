@@ -5,13 +5,26 @@
   export let creationDate: Date;
   export let record: any;
 
-  const resolveProfile = (rcd: any) => {
+  const resolveProfile = (rcd: any): string => {
     if (rcd?.avatar) {
       const url = pb.files.getUrl(rcd, rcd.avatar);
       return url;
     }
 
     return '/profile.svg';
+  };
+
+  const resolveBadge = (badge: string): string => {
+    switch (badge) {
+      case 'developer':
+        return '/developer-badge.svg';
+      case 'verified':
+        return '/verified-badge.svg';
+      case 'admin':
+        return '/admin-badge.svg';
+      default:
+        return '';
+    }
   };
 
   const formatDate = (date: Date) => {
@@ -26,11 +39,11 @@
     });
 
     if (date.toDateString() === today.toDateString()) {
-      return `today at ${timeString}`;
+      return `• today at ${timeString}`;
     } else if (date.toDateString() === today.toDateString()) {
-      return `yesterday at ${timeString}`;
+      return `• yesterday at ${timeString}`;
     } else {
-      return `${dateString} at ${timeString}`;
+      return `• ${dateString} at ${timeString}`;
     }
   };
 </script>
@@ -42,6 +55,16 @@
   <div style="flex: 1 1 auto;">
     <div class="messagetitle">
       <div class="user">{username}</div>
+      <div class="badges">
+        {#each record.badges as badge}
+          <div class="badge">
+            <img alt={badge} src={resolveBadge(badge)} width="20" height="20" />
+            <div class="tooltip">
+              {badge.charAt(0).toUpperCase() + badge.slice(1)}
+            </div>
+          </div>
+        {/each}
+      </div>
       <div class="whenrecieved">{formatDate(creationDate)}</div>
     </div>
     <div class="message"><slot /></div>
@@ -54,6 +77,58 @@
   .container {
     width: 500px;
     display: flex;
+  }
+
+  .badges {
+    display: flex;
+    background: none;
+    justify-content: center;
+    flex-direction: row;
+  }
+
+  .badge {
+    margin-left: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+
+    img {
+      aspect-ratio: 1/1;
+      width: 20px;
+      height: 20px;
+    }
+
+    &:hover .tooltip {
+      visibility: visible;
+    }
+
+    .tooltip {
+      visibility: hidden;
+      width: 120px;
+      background-color: black;
+      color: #fff;
+      text-align: center;
+      border-radius: 6px;
+      padding: 5px 0;
+      position: absolute;
+      z-index: 1;
+      bottom: 150%;
+      left: 50%;
+      margin-left: -60px;
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        margin-left: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: black transparent transparent transparent;
+      }
+    }
   }
 
   .whenrecieved {
