@@ -37,6 +37,16 @@
 
         messages.unshift(record);
         messagesWritable.set(messages);
+      } else if (action === 'delete') {
+        const index = messages.findIndex((item) => item.id === record.id);
+        messages.splice(index, 1);
+        messagesWritable.set(messages);
+      } else if (action === 'update') {
+        const index = messages.findIndex((item) => item.id === record.id);
+        const user = await pb.collection('users').getOne(record.user);
+        record.expand = { user };
+        messages[index] = record;
+        messagesWritable.set(messages);
       }
     });
   });
@@ -72,6 +82,7 @@
         <Message
           username={message.expand.user.username}
           record={message.expand.user}
+          messageId={message.id}
           creationDate={new Date(message.created)}>{message.message}</Message
         >
       {/if}
