@@ -5,9 +5,9 @@
   export let creationDate: Date;
   export let record: any;
 
-  const resolveProfile = () => {
-    if (record?.avatar) {
-      const url = pb.files.getUrl(record, record.avatar);
+  const resolveProfile = (rcd: any) => {
+    if (rcd?.avatar) {
+      const url = pb.files.getUrl(rcd, rcd.avatar);
       return url;
     }
 
@@ -37,7 +37,7 @@
 
 <div class="container">
   <div style="flex: 0 1 50px; padding: 5px;">
-    <img alt="profile" src={resolveProfile()} class="profile" />
+    <img alt="profile" src={resolveProfile(record)} class="profile" />
   </div>
   <div style="flex: 1 1 auto;">
     <div class="messagetitle">
