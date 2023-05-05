@@ -18,12 +18,12 @@
       return;
     }
 
-    const resultList = await pb.collection('messages').getList(1, 50, {
+    const resultList = await pb.collection('messages').getFullList({
       sort: 'created',
       expand: 'user',
     });
 
-    resultList.items.forEach((item) => {
+    resultList.forEach((item) => {
       messages.unshift(item);
     });
 
