@@ -42,7 +42,7 @@
 
     if (date.toDateString() === today.toDateString()) {
       return `• today at ${timeString}`;
-    } else if (date.toDateString() === today.toDateString()) {
+    } else if (date.toDateString() === yesterday.toDateString()) {
       return `• yesterday at ${timeString}`;
     } else {
       return `• ${dateString} at ${timeString}`;
