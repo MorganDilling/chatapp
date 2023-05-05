@@ -22,6 +22,8 @@
         return '/verified-badge.svg';
       case 'admin':
         return '/admin-badge.svg';
+      case 'george':
+        return '/george-badge.svg';
       default:
         return '';
     }
