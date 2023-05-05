@@ -43,7 +43,11 @@
   let profile: string;
 
   const ChangeProfileHandler = async () => {
-    await pb.collection('users').update($autheduser.id, { avatar: file });
+    if (!file) return;
+    const formData = new FormData();
+    formData.append('avatar', file);
+
+    await pb.collection('users').update($autheduser.id, formData);
     visible = false;
     sharedVisible = false;
   };
@@ -66,42 +70,46 @@
             {file?.name}
           </p>
         {/if}
-        <form on:submit|preventDefault style="margin: 20px;">
-          <button
-            style="display:flex;justify-content:center;align-items:center;"
-            type="button"
-            on:click={() => {
-              const fileInput = document.getElementById('recovery_data');
-              fileInput?.click();
-            }}><Upload style="margin-right:5px" />Upload picture</button
-          >
-          <input
-            style="display:none;"
-            id="recovery_data"
-            type="file"
-            accept=".png, .jpg, .jpeg"
-            on:change={async (e) => {
-              const content = await getFileData(e);
+        <form
+          on:submit|preventDefault={ChangeProfileHandler}
+          style="display: flex; align-items: center; flex-direction: column;"
+        >
+          <div style="margin: 20px;">
+            <button
+              style="display:flex;justify-content:center;align-items:center;"
+              type="button"
+              on:click={() => {
+                const fileInput = document.getElementById('file_upload');
+                fileInput?.click();
+              }}><Upload style="margin-right:5px" />Upload picture</button
+            >
+            <input
+              style="display:none;"
+              id="file_upload"
+              type="file"
+              accept=".png, .jpg, .jpeg"
+              name="avatar"
+              on:change={async (e) => {
+                const content = await getFileData(e);
 
-              if (content) {
-                file = content.file;
-                profile = content.content;
-              }
-            }}
-          />
+                if (content) {
+                  file = content.file;
+                  profile = content.content;
+                }
+              }}
+            />
+          </div>
+          <div class="options">
+            <button
+              on:click={() => {
+                visible = false;
+                sharedVisible = false;
+              }}
+              class="cancel">CANCEL</button
+            >
+            <button type="submit" class="confirm">CHANGE!</button>
+          </div>
         </form>
-        <div class="options">
-          <button
-            on:click={() => {
-              visible = false;
-              sharedVisible = false;
-            }}
-            class="cancel">CANCEL</button
-          >
-          <button on:click={ChangeProfileHandler} class="confirm"
-            >CHANGE!</button
-          >
-        </div>
       </div>
     </main>
   </div>
@@ -168,6 +176,6 @@
   .options {
     display: flex;
     justify-content: space-evenly;
-    width: 70%;
+    width: 129%;
   }
 </style>

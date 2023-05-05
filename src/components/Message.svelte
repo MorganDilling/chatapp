@@ -1,7 +1,18 @@
 <script lang="ts">
+  import { pb } from '../lib/PocketBase';
+
   export let username: string;
   export let creationDate: Date;
-  export let profile: string;
+  export let record: any;
+
+  const resolveProfile = () => {
+    if (record?.avatar) {
+      const url = pb.files.getUrl(record, record.avatar);
+      return url;
+    }
+
+    return '/profile.svg';
+  };
 
   const formatDate = (date: Date) => {
     const today = new Date();
@@ -26,11 +37,7 @@
 
 <div class="container">
   <div style="flex: 0 1 50px; padding: 5px;">
-    <img
-      alt="profile"
-      src={!!profile ? profile : '/profile.svg'}
-      class="profile"
-    />
+    <img alt="profile" src={resolveProfile()} class="profile" />
   </div>
   <div style="flex: 1 1 auto;">
     <div class="messagetitle">

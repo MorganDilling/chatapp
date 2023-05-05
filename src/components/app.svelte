@@ -71,7 +71,7 @@
       {#if message.expand.user}
         <Message
           username={message.expand.user.username}
-          profile={message.expand.user.avatar}
+          record={message.expand.user}
           creationDate={new Date(message.created)}>{message.message}</Message
         >
       {/if}
