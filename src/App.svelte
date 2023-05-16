@@ -32,10 +32,6 @@
           "The #1 way to get harrassed on the internet."<br /> - Anonymous user
         </h1>
       </div>
-
-      <div class="copyright">
-        <h6>© ChatApp incorporated 2023</h6>
-      </div>
     </main>
   </Route>
   <Route path="app" component={app} />
