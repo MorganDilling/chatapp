@@ -20,6 +20,11 @@
         </div>
       </div>
 
+      <div class="warning">
+        Please note that after the 23rd of May 2023, this application will no
+        longer operate due to the shutdown of the back-end server.
+      </div>
+
       <div class="welcome">
         <h1>
           Welcome to ChatApp, the world's best single channel chat
@@ -31,6 +36,42 @@
         <h1>
           "The #1 way to get harrassed on the internet."<br /> - Anonymous user
         </h1>
+      </div>
+      <div class="examples">
+        <h3>
+          As this application no longer works, here are some screenshots of it
+          in action.
+        </h3>
+
+        <br />
+
+        <img src="SCR-20230521-hqa.png" alt="ChatApp screenshot" />
+
+        <img src="SCR-20230521-i62.png" alt="ChatApp screenshot" />
+
+        <img src="SCR-20230521-ih2.png" alt="ChatApp screenshot" />
+
+        <img
+          style="width: 50%"
+          src="SCR-20230521-iih.png"
+          alt="ChatApp screenshot"
+        />
+
+        <img
+          style="width: 50%"
+          src="SCR-20230521-ikb.png"
+          alt="ChatApp screenshot"
+        />
+      </div>
+
+      <div class="copyright">
+        <h6>
+          <a
+            style="font-size: 20px; color: black; font-weight: 300; cursor: pointer;"
+            href="https://github.com/MorganDilling/chatapp"
+            >https://github.com/MorganDilling/chatapp</a
+          >
+        </h6>
       </div>
     </main>
   </Route>
@@ -81,11 +122,35 @@
     left: 0;
     top: 0;
     position: sticky;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+  }
+
+  .warning {
+    background-color: #ff9f3f;
+    color: colours.$text;
+    padding: 12px;
+    text-align: center;
   }
 
   .welcome {
     padding: 150px;
   }
+
+  .examples {
+    padding: 100px;
+    padding-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    img {
+      width: 100%;
+      height: auto;
+      margin-bottom: 20px;
+      box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+    }
+  }
+
   .copyright {
     text-align: center;
   }
@@ -94,5 +159,30 @@
     color: colours.$black;
     padding: 150px;
     text-align: left;
+  }
+  @media only screen and (max-width: 600px) {
+    .options-container {
+      flex-direction: column;
+    }
+
+    .button {
+      width: 100%;
+    }
+
+    .welcome {
+      padding: 50px;
+    }
+
+    .examples {
+      padding: 50px;
+
+      img {
+        width: 100% !important;
+      }
+    }
+
+    .review {
+      padding: 50px;
+    }
   }
 </style>
