@@ -3,7 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@sveltejs/vite-plugin-svelte': ^2.0.3
   '@tsconfig/svelte': ^4.0.1
-  '@types/node': ^18.16.0
+  '@types/node': ^20.0.0
   pocketbase: ^0.14.0
   sass: ^1.62.0
   svelte: ^3.57.0
@@ -22,13 +22,13 @@ dependencies:
 devDependencies:
   '@sveltejs/vite-plugin-svelte': 2.1.0_svelte@3.58.0+vite@4.3.1
   '@tsconfig/svelte': 4.0.1
-  '@types/node': 18.16.0
+  '@types/node': 20.8.7
   sass: 1.62.0
   svelte: 3.58.0
   svelte-check: 2.10.3_sass@1.62.0+svelte@3.58.0
   tslib: 2.5.0
   typescript: 5.0.4
-  vite: 4.3.1_bokcuvrrysibkrorheksuyfcmq
+  vite: 4.3.1_n5mdqir3gmc7mtp5kfswdnpebe
 
 packages:
 
@@ -284,7 +284,7 @@ packages:
       magic-string: 0.30.0
       svelte: 3.58.0
       svelte-hmr: 0.15.1_svelte@3.58.0
-      vite: 4.3.1_bokcuvrrysibkrorheksuyfcmq
+      vite: 4.3.1_n5mdqir3gmc7mtp5kfswdnpebe
       vitefu: 0.2.4_vite@4.3.1
     transitivePeerDependencies:
       - supports-color
@@ -294,8 +294,10 @@ packages:
     resolution: {integrity: sha512-B+XlGpmuAQzJqDoBATNCvEPqQg0HkO7S8pM14QDI5NsmtymzRexQ1N+nX2H6RTtFbuFgaZD4I8AAi8voGg0GLg==}
     dev: true
 
-  /@types/node/18.16.0:
-    resolution: {integrity: sha512-BsAaKhB+7X+H4GnSjGhJG9Qi8Tw+inU9nJDwmD5CgOmBLEI6ArdhikpLX7DjbjDRDTbqZzU2LSQNZg8WGPiSZQ==}
+  /@types/node/20.8.7:
+    resolution: {integrity: sha512-21TKHHh3eUHIi2MloeptJWALuCu5H7HQTdTrWIFReA8ad+aggoX+lRes3ex7/FtpC+sVUpFMQ+QTfYr74mruiQ==}
+    dependencies:
+      undici-types: 5.25.3
     dev: true
 
   /@types/pug/2.0.6:
@@ -896,7 +898,11 @@ packages:
     engines: {node: '>=12.20'}
     hasBin: true
 
-  /vite/4.3.1_bokcuvrrysibkrorheksuyfcmq:
+  /undici-types/5.25.3:
+    resolution: {integrity: sha512-Ga1jfYwRn7+cP9v8auvEXN1rX3sWqlayd4HP7OKk4mZWylEmu3KzXDUGrQUN6Ol7qo1gPvB2e5gX6udnyEPgdA==}
+    dev: true
+
+  /vite/4.3.1_n5mdqir3gmc7mtp5kfswdnpebe:
     resolution: {integrity: sha512-EPmfPLAI79Z/RofuMvkIS0Yr091T2ReUoXQqc5ppBX/sjFRhHKiPPF/R46cTdoci/XgeQpB23diiJxq5w30vdg==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
@@ -921,7 +927,7 @@ packages:
       terser:
         optional: true
     dependencies:
-      '@types/node': 18.16.0
+      '@types/node': 20.8.7
       esbuild: 0.17.18
       postcss: 8.4.23
       rollup: 3.20.7
@@ -938,7 +944,7 @@ packages:
       vite:
         optional: true
     dependencies:
-      vite: 4.3.1_bokcuvrrysibkrorheksuyfcmq
+      vite: 4.3.1_n5mdqir3gmc7mtp5kfswdnpebe
     dev: true
 
   /wrappy/1.0.2:
