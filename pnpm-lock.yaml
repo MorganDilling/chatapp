@@ -4,7 +4,7 @@ specifiers:
   '@sveltejs/vite-plugin-svelte': ^2.0.3
   '@tsconfig/svelte': ^4.0.1
   '@types/node': ^18.16.0
-  pocketbase: ^0.14.0
+  pocketbase: ^0.21.0
   sass: ^1.62.0
   svelte: ^3.57.0
   svelte-bootstrap-icons: ^2.3.1
@@ -15,7 +15,7 @@ specifiers:
   vite: ^4.3.0
 
 dependencies:
-  pocketbase: 0.14.0
+  pocketbase: 0.21.0
   svelte-bootstrap-icons: 2.3.1
   svelte-navigator: 3.2.2_kxq5ayp4qfv2n6flkngpsntzw4
 
@@ -653,8 +653,8 @@ packages:
     engines: {node: '>=8.6'}
     dev: true
 
-  /pocketbase/0.14.0:
-    resolution: {integrity: sha512-4y8kZkGQh4NJkuy/LntUBbFAplz655/5/+XYKetSwj6MYMo3N3zWFno+HxzmL59njsauwGsiNEWggbEETm1+WA==}
+  /pocketbase/0.21.0:
+    resolution: {integrity: sha512-WGA5qxW9jzwOTx0i3FNhkKBlT2F5EvC8qZDYv14SB3BeOZVAqs6wMTj7vAXD52V0Fg8zF4XPHJCAJK04fw1rqg==}
     dev: false
 
   /postcss/8.4.23:
